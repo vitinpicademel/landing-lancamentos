@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 @keyframes progress-fill {
-  from {
+  0% {
     width: 0%;
   }
-  to {
-    width: var(--progress-width, 100%);
+  100% {
+    width: var(--progress-width);
   }
 }
 
@@ -53,8 +53,8 @@
 }
 
 .animate-progress-fill {
-  --progress-width: 100%;
-  animation: progress-fill 2s ease-out forwards;
+  animation: progress-fill 1.5s ease-out forwards;
+  width: var(--progress-width);
   background-color: #2D6A4F;
 }
 

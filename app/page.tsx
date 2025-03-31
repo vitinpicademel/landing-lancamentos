@@ -359,7 +359,10 @@ export default function Home() {
           
           {/* Barra de progresso principal */}
           <div className="relative h-12 bg-[#E8EBE4] rounded-full mb-20 shadow-inner">
-            <div className="absolute left-0 top-0 h-full w-[52%] bg-[#2D6A4F] rounded-full animate-progress-fill"></div>
+            <div 
+              className="absolute left-0 top-0 h-full bg-[#2D6A4F] rounded-full transition-all duration-1000"
+              style={{ width: '52%' }}
+            ></div>
             <div className="absolute -right-2 -top-2 md:-right-4 md:-top-4 w-10 h-10 md:w-14 md:h-14 bg-white border-4 border-[#2D6A4F] flex items-center justify-center shadow-lg transform hover:scale-105 transition-all duration-300 rounded-full">
               <span className="text-[#2D6A4F] font-bold text-xs md:text-sm">52%</span>
             </div>
@@ -463,10 +466,8 @@ export default function Home() {
                     </div>
                     <div className="h-2 md:h-3 bg-[#E8EBE4] rounded-full w-full overflow-hidden shadow-inner">
                       <div 
-                        className="h-full bg-[#2D6A4F] rounded-full animate-progress-fill"
-                        style={{ 
-                          '--progress-width': `${progress[item.name.toLowerCase().replace(/\s+/g, '')]}%`
-                        } as React.CSSProperties}
+                        className="h-full bg-[#2D6A4F] rounded-full transition-all duration-1000"
+                        style={{ width: `${progress[item.name.toLowerCase().replace(/\s+/g, '')]}%` }}
                       ></div>
                     </div>
                     <p className="text-sm md:text-base font-medium text-center text-gray-700">{item.name}</p>
