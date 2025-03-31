@@ -54,7 +54,6 @@
 
 .animate-progress-fill {
   animation: progress-fill 1.5s ease-out forwards;
-  width: var(--progress-width);
   background-color: #2D6A4F;
 }
 

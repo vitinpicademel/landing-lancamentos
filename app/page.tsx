@@ -360,11 +360,12 @@ export default function Home() {
           {/* Barra de progresso principal */}
           <div className="relative h-12 bg-[#E8EBE4] rounded-full mb-20 shadow-inner">
             <div 
-              className="absolute left-0 top-0 h-full bg-[#2D6A4F] rounded-full transition-all duration-1000"
-              style={{ width: '52%' }}
-            ></div>
-            <div className="absolute -right-2 -top-2 md:-right-4 md:-top-4 w-10 h-10 md:w-14 md:h-14 bg-white border-4 border-[#2D6A4F] flex items-center justify-center shadow-lg transform hover:scale-105 transition-all duration-300 rounded-full">
-              <span className="text-[#2D6A4F] font-bold text-xs md:text-sm">52%</span>
+              className="animate-progress-fill relative h-full rounded-full"
+              style={{ '--progress-width': '52%' } as React.CSSProperties}
+            >
+              <div className="absolute -right-2 -top-2 md:-right-4 md:-top-4 w-10 h-10 md:w-14 md:h-14 bg-white border-4 border-[#2D6A4F] flex items-center justify-center shadow-lg transform hover:scale-105 transition-all duration-300 rounded-full">
+                <span className="text-[#2D6A4F] font-bold text-xs md:text-sm">52%</span>
+              </div>
             </div>
           </div>
 
@@ -372,6 +373,7 @@ export default function Home() {
             {[
               {
                 name: 'Drenagem',
+                progress: 40,
                 icon: (
                   <svg viewBox="0 0 24 24" fill="none" stroke="#4B5563" strokeWidth="2" className="w-10 h-10">
                     <path d="M7 21H3V17M17 21H21V17M17 3H21V7"/>
@@ -382,6 +384,7 @@ export default function Home() {
               },
               {
                 name: 'Paisagismo',
+                progress: 20,
                 icon: (
                   <svg viewBox="0 0 24 24" fill="none" stroke="#4B5563" strokeWidth="2" className="w-10 h-10">
                     <path d="M12 19c0-7 7-13 7-13s-7-1-7 7c0-8-7-7-7-7s7 6 7 13"/>
@@ -392,6 +395,7 @@ export default function Home() {
               },
               {
                 name: 'Lazer',
+                progress: 0,
                 icon: (
                   <svg viewBox="0 0 24 24" fill="none" stroke="#4B5563" strokeWidth="2" className="w-10 h-10">
                     <path d="M22 17H2a3 3 0 0 0 3-3V9a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v5a3 3 0 0 0 3 3"/>
@@ -403,6 +407,7 @@ export default function Home() {
               },
               {
                 name: 'Pavimentação',
+                progress: 90,
                 icon: (
                   <svg viewBox="0 0 24 24" fill="none" stroke="#4B5563" strokeWidth="2" className="w-10 h-10">
                     <path d="M3 8h18v12H3z"/>
@@ -415,6 +420,7 @@ export default function Home() {
               },
               {
                 name: 'Terraplanagem',
+                progress: 100,
                 icon: (
                   <svg viewBox="0 0 24 24" fill="none" stroke="#4B5563" strokeWidth="2" className="w-10 h-10">
                     <path d="M2 22h20"/>
@@ -424,6 +430,7 @@ export default function Home() {
               },
               {
                 name: 'Rede de Esgoto',
+                progress: 100,
                 icon: (
                   <svg viewBox="0 0 24 24" fill="none" stroke="#4B5563" strokeWidth="2" className="w-10 h-10">
                     <circle cx="12" cy="12" r="10"/>
@@ -436,6 +443,7 @@ export default function Home() {
               },
               {
                 name: 'Iluminação',
+                progress: 15,
                 icon: (
                   <svg viewBox="0 0 24 24" fill="none" stroke="#4B5563" strokeWidth="2" className="w-10 h-10">
                     <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
@@ -446,6 +454,7 @@ export default function Home() {
               },
               {
                 name: 'Rede de Água',
+                progress: 50,
                 icon: (
                   <svg viewBox="0 0 24 24" fill="none" stroke="#4B5563" strokeWidth="2" className="w-10 h-10">
                     <path d="M12 2v6"/>
@@ -457,7 +466,7 @@ export default function Home() {
               <div key={item.name} className="p-2 md:p-4 group">
                 <div className="relative bg-white rounded-2xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
                   <div className="absolute -right-2 -top-2 md:-right-4 md:-top-4 w-10 h-10 md:w-14 md:h-14 bg-[#2D6A4F] flex items-center justify-center shadow-lg transform hover:scale-105 transition-all duration-300 rounded-full">
-                    <span className="text-white font-bold text-xs md:text-sm">{progress[item.name.toLowerCase().replace(/\s+/g, '').replace(/ç/g, 'c')]}%</span>
+                    <span className="text-white font-bold text-xs md:text-sm">{item.progress}%</span>
                   </div>
                   <div className="flex flex-col items-center space-y-4 md:space-y-6">
                     <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg relative overflow-hidden">
@@ -466,8 +475,8 @@ export default function Home() {
                     </div>
                     <div className="h-2 md:h-3 bg-[#E8EBE4] rounded-full w-full overflow-hidden shadow-inner">
                       <div 
-                        className="h-full bg-[#2D6A4F] rounded-full transition-all duration-1000"
-                        style={{ width: `${progress[item.name.toLowerCase().replace(/\s+/g, '').replace(/ç/g, 'c')]}%` }}
+                        className="animate-progress-fill h-full rounded-full"
+                        style={{ '--progress-width': `${item.progress}%` } as React.CSSProperties}
                       ></div>
                     </div>
                     <p className="text-sm md:text-base font-medium text-center text-gray-700">{item.name}</p>
