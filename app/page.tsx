@@ -25,24 +25,6 @@ export default function Home() {
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
 
-  // Efeito para animar as barras de progresso
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setProgress({
-        drenagem: 100,
-        paisagismo: 100,
-        lazer: 100,
-        pavimentacao: 100,
-        terraplanagem: 100,
-        redeEsgoto: 100,
-        iluminacao: 100,
-        redeAgua: 100
-      })
-    }, 500)
-
-    return () => clearTimeout(timer)
-  }, [])
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
@@ -377,9 +359,9 @@ export default function Home() {
           
           {/* Barra de progresso principal */}
           <div className="relative h-12 bg-[#E8EBE4] rounded-full mb-20 shadow-inner">
-            <div className="absolute left-0 top-0 h-full w-[100%] bg-[#2D6A4F] rounded-full animate-progress-fill"></div>
+            <div className="absolute left-0 top-0 h-full w-[52%] bg-[#2D6A4F] rounded-full animate-progress-fill"></div>
             <div className="absolute -right-2 -top-2 md:-right-4 md:-top-4 w-10 h-10 md:w-14 md:h-14 bg-white border-4 border-[#2D6A4F] flex items-center justify-center shadow-lg transform hover:scale-105 transition-all duration-300 rounded-full">
-              <span className="text-[#2D6A4F] font-bold text-xs md:text-sm">100%</span>
+              <span className="text-[#2D6A4F] font-bold text-xs md:text-sm">52%</span>
             </div>
           </div>
 
@@ -472,7 +454,7 @@ export default function Home() {
               <div key={item.name} className="p-2 md:p-4 group">
                 <div className="relative bg-white rounded-2xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
                   <div className="absolute -right-2 -top-2 md:-right-4 md:-top-4 w-10 h-10 md:w-14 md:h-14 bg-[#2D6A4F] flex items-center justify-center shadow-lg transform hover:scale-105 transition-all duration-300 rounded-full">
-                    <span className="text-white font-bold text-xs md:text-sm">100%</span>
+                    <span className="text-white font-bold text-xs md:text-sm">{progress[item.name.toLowerCase().replace(/\s+/g, '')]}%</span>
                   </div>
                   <div className="flex flex-col items-center space-y-4 md:space-y-6">
                     <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg relative overflow-hidden">
