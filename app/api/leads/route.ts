@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
 import connectDB from '@/app/lib/mongodb';
-import Lead from '@/app/models/Lead';
+import Lead, { ILead } from '@/app/models/Lead';
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
+    const body = await request.json() as Omit<ILead, 'dataEnvio'>;
     
     await connectDB();
     

@@ -1,4 +1,16 @@
-import mongoose from 'mongoose';
+import mongoose, { Document, Model } from 'mongoose';
+
+interface ILead {
+  nome: string;
+  whatsapp: string;
+  email: string;
+  tipoLote: 'comercial' | 'residencial';
+  parcelas: string;
+  aceitoPrivacidade: boolean;
+  dataEnvio?: Date;
+}
+
+interface ILeadDocument extends ILead, Document {}
 
 const LeadSchema = new mongoose.Schema({
   nome: {
@@ -32,4 +44,7 @@ const LeadSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.models.Lead || mongoose.model('Lead', LeadSchema); 
+const Lead: Model<ILeadDocument> = mongoose.models.Lead || mongoose.model<ILeadDocument>('Lead', LeadSchema);
+
+export type { ILead };
+export default Lead; 
