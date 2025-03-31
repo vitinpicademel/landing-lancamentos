@@ -5,14 +5,14 @@ import Image from 'next/image'
 export default function Home() {
   const [mapView, setMapView] = useState('2d')
   const [progress, setProgress] = useState({
-    drenagem: 0,
-    paisagismo: 0,
+    drenagem: 40,
+    paisagismo: 20,
     lazer: 0,
-    pavimentacao: 0,
-    terraplanagem: 0,
-    redeEsgoto: 0,
-    iluminacao: 0,
-    redeAgua: 0
+    pavimentacao: 90,
+    terraplanagem: 100,
+    redeEsgoto: 100,
+    iluminacao: 15,
+    redeAgua: 50
   })
   const [formData, setFormData] = useState({
     nome: '',
@@ -597,24 +597,24 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-              <p className="text-2xl font-bold text-[#445840] mb-2">19 min</p>
-              <p className="text-gray-600">7,6km</p>
+              <p className="text-2xl font-bold text-[#445840] mb-2">12 min</p>
+              <p className="text-gray-600">5,5 km</p>
               <h3 className="text-lg font-medium mt-2">Centro de Uberaba</h3>
             </div>
             <div className="p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-              <p className="text-2xl font-bold text-[#445840] mb-2">11 min</p>
-              <p className="text-gray-600">7km</p>
+              <p className="text-2xl font-bold text-[#445840] mb-2">20 min</p>
+              <p className="text-gray-600">9,2 km</p>
               <h3 className="text-lg font-medium mt-2">Aeroporto de Uberaba</h3>
             </div>
             <div className="p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-              <p className="text-2xl font-bold text-[#445840] mb-2">18 min</p>
-              <p className="text-gray-600">10,5km</p>
+              <p className="text-2xl font-bold text-[#445840] mb-2">15 min</p>
+              <p className="text-gray-600">9 km</p>
               <h3 className="text-lg font-medium mt-2">Hospital Regional</h3>
             </div>
             <div className="p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-              <p className="text-2xl font-bold text-[#445840] mb-2">15 min</p>
-              <p className="text-gray-600">6,5km</p>
-              <h3 className="text-lg font-medium mt-2">Shopping Uberaba</h3>
+              <p className="text-2xl font-bold text-[#445840] mb-2">10 min</p>
+              <p className="text-gray-600">5,5 km</p>
+              <h3 className="text-lg font-medium mt-2">Praça Shopping Uberaba</h3>
             </div>
           </div>
         </div>
