@@ -457,7 +457,7 @@ export default function Home() {
               <div key={item.name} className="p-2 md:p-4 group">
                 <div className="relative bg-white rounded-2xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
                   <div className="absolute -right-2 -top-2 md:-right-4 md:-top-4 w-10 h-10 md:w-14 md:h-14 bg-[#2D6A4F] flex items-center justify-center shadow-lg transform hover:scale-105 transition-all duration-300 rounded-full">
-                    <span className="text-white font-bold text-xs md:text-sm">{progress[item.name.toLowerCase().replace(/\s+/g, '')]}%</span>
+                    <span className="text-white font-bold text-xs md:text-sm">{progress[item.name.toLowerCase().replace(/\s+/g, '').replace(/ç/g, 'c')]}%</span>
                   </div>
                   <div className="flex flex-col items-center space-y-4 md:space-y-6">
                     <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg relative overflow-hidden">
@@ -467,7 +467,7 @@ export default function Home() {
                     <div className="h-2 md:h-3 bg-[#E8EBE4] rounded-full w-full overflow-hidden shadow-inner">
                       <div 
                         className="h-full bg-[#2D6A4F] rounded-full transition-all duration-1000"
-                        style={{ width: `${progress[item.name.toLowerCase().replace(/\s+/g, '')]}%` }}
+                        style={{ width: `${progress[item.name.toLowerCase().replace(/\s+/g, '').replace(/ç/g, 'c')]}%` }}
                       ></div>
                     </div>
                     <p className="text-sm md:text-base font-medium text-center text-gray-700">{item.name}</p>
