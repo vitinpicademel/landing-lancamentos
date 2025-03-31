@@ -31,6 +31,7 @@ export default function Home() {
     setMessage('')
 
     try {
+      console.log('Enviando dados:', formData)
       const response = await fetch('/api/leads', {
         method: 'POST',
         headers: {
@@ -40,6 +41,7 @@ export default function Home() {
       })
 
       const data = await response.json()
+      console.log('Resposta do servidor:', data)
 
       if (response.ok) {
         setMessage('Dados enviados com sucesso!')
@@ -52,10 +54,11 @@ export default function Home() {
           aceitoPrivacidade: false
         })
       } else {
-        setMessage('Erro ao enviar dados. Tente novamente.')
+        setMessage(`Erro ao enviar dados: ${data.message || 'Tente novamente.'}`)
       }
     } catch (error) {
-      setMessage('Erro ao enviar dados. Tente novamente.')
+      console.error('Erro ao enviar formulário:', error)
+      setMessage('Erro ao enviar dados. Por favor, tente novamente.')
     } finally {
       setLoading(false)
     }
