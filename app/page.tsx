@@ -112,9 +112,13 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div className="text-white space-y-8 lg:pl-8">
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight drop-shadow-md">
-                Seu comércio ou sua casa em um bairro <br/>
+                Condomínio Fechado <br/>
                 <span className="text-[#373737] bg-white px-6 py-3 rounded-lg inline-block mt-4 shadow-lg">
                   totalmente planejado
+                </span>
+                <br/>
+                <span className="text-3xl md:text-4xl lg:text-5xl mt-4 block">
+                  para seu comércio ou sua casa
                 </span>
               </h1>
               <div className="flex justify-center mt-8">
