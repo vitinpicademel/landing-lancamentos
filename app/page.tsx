@@ -17,9 +17,6 @@ export default function Home() {
   const [formData, setFormData] = useState({
     nome: '',
     whatsapp: '',
-    email: '',
-    tipoLote: '',
-    parcelas: '',
     aceitoPrivacidade: false
   })
   const [loading, setLoading] = useState(false)
@@ -48,9 +45,6 @@ export default function Home() {
         setFormData({
           nome: '',
           whatsapp: '',
-          email: '',
-          tipoLote: '',
-          parcelas: '',
           aceitoPrivacidade: false
         })
       } else {
@@ -177,51 +171,6 @@ export default function Home() {
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent" 
                     placeholder="(00) 00000-0000"
                   />
-                </div>
-                <div>
-                  <label className="block text-gray-700 mb-2">Email</label>
-                  <input 
-                    type="email" 
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent" 
-                    placeholder="seu@email.com"
-                  />
-                </div>
-                <div>
-                  <label className="block text-gray-700 mb-2">Tipo de Lote</label>
-                  <select 
-                    name="tipoLote"
-                    value={formData.tipoLote}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent"
-                  >
-                    <option value="">Selecione uma opção</option>
-                    <option value="comercial">Comercial</option>
-                    <option value="residencial">Residencial</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-gray-700 mb-2">Parcelas</label>
-                  <select 
-                    name="parcelas"
-                    value={formData.parcelas}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent"
-                  >
-                    <option value="">Qual parcela mensal se encaixa melhor para você?</option>
-                    <option value="499">R$ 499,00</option>
-                    <option value="800">R$ 800,00</option>
-                    <option value="1100">R$ 1.100,00</option>
-                    <option value="1726">R$ 1.726,00</option>
-                    <option value="acima1000">Acima de R$ 1.000,00</option>
-                    <option value="nao_consigo">não consigo arcar</option>
-                    <option value="avista">Pretendo comprar à vista</option>
-                  </select>
                 </div>
                 <div className="flex items-center">
                   <input 
