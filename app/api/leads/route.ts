@@ -20,17 +20,25 @@ export async function POST(request: Request) {
     console.log('Lead criado com sucesso:', JSON.stringify(lead, null, 2));
 
     // Enviando lead para o C2S
+    let c2sResponse = null;
     try {
       console.log('Enviando lead para o C2S...');
       const c2sLead = {
         customer: {
           name: body.nome,
           email: body.email,
-          phone: body.whatsapp
+          phone: body.whatsapp.replace(/\D/g, '') // Remove caracteres não numéricos
+        },
+        product: {
+          description: `Lote ${body.tipoLote} - ${body.parcelas} parcelas`
         },
         lead_source: {
           id: 1,
           name: 'Landing Page'
+        },
+        channel: {
+          id: 1,
+          name: 'Website'
         },
         lead_status: {
           id: 1,
@@ -40,9 +48,15 @@ export async function POST(request: Request) {
           id: 1,
           alias: 'under_negotiation',
           name: 'Em Negociação'
-        }
+        },
+        tags: [
+          {
+            id: '1',
+            name: body.tipoLote
+          }
+        ]
       };
-      await sendLeadToC2S(c2sLead);
+      c2sResponse = await sendLeadToC2S(c2sLead);
       console.log('Lead enviado com sucesso para o C2S');
     } catch (c2sError) {
       console.error('Erro ao enviar lead para o C2S:', c2sError);
@@ -50,7 +64,11 @@ export async function POST(request: Request) {
     }
     
     return NextResponse.json(
-      { message: 'Lead cadastrado com sucesso!', lead },
+      { 
+        message: 'Lead cadastrado com sucesso!', 
+        lead,
+        c2s: c2sResponse || 'Erro ao enviar para o C2S'
+      },
       { status: 201 }
     );
   } catch (error) {
