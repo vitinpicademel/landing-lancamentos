@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import connectDB from '@/app/lib/mongodb';
 import Lead, { ILead } from '@/app/models/Lead';
 import mongoose from 'mongoose';
+import { sendLeadToC2S } from '@/app/lib/c2s';
 
 export async function POST(request: Request) {
   try {
@@ -17,6 +18,36 @@ export async function POST(request: Request) {
     console.log('Criando lead no banco de dados...');
     const lead = await Lead.create(body);
     console.log('Lead criado com sucesso:', JSON.stringify(lead, null, 2));
+
+    // Enviando lead para o C2S
+    try {
+      console.log('Enviando lead para o C2S...');
+      const c2sLead = {
+        customer: {
+          name: body.nome,
+          email: body.email,
+          phone: body.whatsapp
+        },
+        lead_source: {
+          id: 1,
+          name: 'Landing Page'
+        },
+        lead_status: {
+          id: 1,
+          alias: 'novo'
+        },
+        funnel_status: {
+          id: 1,
+          alias: 'under_negotiation',
+          name: 'Em Negociação'
+        }
+      };
+      await sendLeadToC2S(c2sLead);
+      console.log('Lead enviado com sucesso para o C2S');
+    } catch (c2sError) {
+      console.error('Erro ao enviar lead para o C2S:', c2sError);
+      // Não interrompemos o fluxo se houver erro no C2S
+    }
     
     return NextResponse.json(
       { message: 'Lead cadastrado com sucesso!', lead },
