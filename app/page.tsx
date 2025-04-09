@@ -17,6 +17,9 @@ export default function Home() {
   const [formData, setFormData] = useState({
     nome: '',
     whatsapp: '',
+    email: '',
+    tipoLote: 'residencial',
+    parcelas: '180',
     aceitoPrivacidade: false
   })
   const [loading, setLoading] = useState(false)
@@ -45,6 +48,9 @@ export default function Home() {
         setFormData({
           nome: '',
           whatsapp: '',
+          email: '',
+          tipoLote: 'residencial',
+          parcelas: '180',
           aceitoPrivacidade: false
         })
       } else {
@@ -161,6 +167,18 @@ export default function Home() {
                   />
                 </div>
                 <div>
+                  <label className="block text-gray-700 mb-2">E-mail</label>
+                  <input 
+                    type="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent" 
+                    placeholder="seu@email.com"
+                  />
+                </div>
+                <div>
                   <label className="block text-gray-700 mb-2">WhatsApp</label>
                   <input 
                     type="tel" 
@@ -171,6 +189,33 @@ export default function Home() {
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent" 
                     placeholder="(00) 00000-0000"
                   />
+                </div>
+                <div>
+                  <label className="block text-gray-700 mb-2">Tipo de Lote</label>
+                  <select
+                    name="tipoLote"
+                    value={formData.tipoLote}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent"
+                  >
+                    <option value="residencial">Residencial</option>
+                    <option value="comercial">Comercial</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-gray-700 mb-2">Parcelas</label>
+                  <select
+                    name="parcelas"
+                    value={formData.parcelas}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent"
+                  >
+                    <option value="180">180 parcelas</option>
+                    <option value="120">120 parcelas</option>
+                    <option value="60">60 parcelas</option>
+                  </select>
                 </div>
                 <div className="flex items-center">
                   <input 
