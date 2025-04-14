@@ -14,10 +14,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" className="scroll-smooth">
-      <head>
-        <GoogleTagManager />
-      </head>
+      <head />
       <body>
+        <GoogleTagManager />
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-NN6WXLBV"
