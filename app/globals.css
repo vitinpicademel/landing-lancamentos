@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes progress-fill {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: var(--progress-width);
+  }
+}
+
+@keyframes pulse-bar {
+  0% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(0.98);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(74, 222, 128, 0.4),
+                inset 0 0 15px rgba(74, 222, 128, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(74, 222, 128, 0.6),
+                inset 0 0 30px rgba(74, 222, 128, 0.6);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(-5px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+@keyframes move-stripes {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 0;
+  }
+}
+
+.animate-progress-fill {
+  animation: progress-fill 1.5s ease-out forwards;
+  background-color: #2D6A4F;
+}
+
+.animate-bounce {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes leaf-wave {
+  0%, 100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+.animate-leaf {
+  animation: leaf-wave 5s ease-in-out infinite;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 200% 50%;
+  }
+  100% {
+    background-position: -200% 50%;
+  }
+} 
